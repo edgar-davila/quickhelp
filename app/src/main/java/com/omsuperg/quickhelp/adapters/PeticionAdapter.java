@@ -38,6 +38,11 @@ public class PeticionAdapter extends RecyclerView.Adapter<PeticionAdapter.ViewHo
         return vh;
     }
 
+    public void add(PeticionModel peticionModel){
+        this.peticionModels.add(0, peticionModel);
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
