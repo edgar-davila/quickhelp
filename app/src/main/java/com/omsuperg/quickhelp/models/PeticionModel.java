@@ -1,9 +1,12 @@
 package com.omsuperg.quickhelp.models;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
-public class PeticionModel {
+public class PeticionModel implements Parcelable {
 
     private final int id;
     private final String facebookProfileId;
@@ -26,6 +29,29 @@ public class PeticionModel {
         this.cantidadPersonas = cantidadPersonas;
         this.createdAt = createdAt;
     }
+
+    protected PeticionModel(Parcel in) {
+        id = in.readInt();
+        facebookProfileId = in.readString();
+        titulo = in.readString();
+        categoria = in.readString();
+        descripcion = in.readString();
+        statusModel = in.readInt();
+        cantidadPersonas = in.readInt();
+        createdAt = (java.util.Date) in.readSerializable();
+    }
+
+    public static final Creator<PeticionModel> CREATOR = new Creator<PeticionModel>() {
+        @Override
+        public PeticionModel createFromParcel(Parcel in) {
+            return new PeticionModel(in);
+        }
+
+        @Override
+        public PeticionModel[] newArray(int size) {
+            return new PeticionModel[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -57,5 +83,22 @@ public class PeticionModel {
 
     public String getFacebookProfileId() {
         return facebookProfileId;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(facebookProfileId);
+        parcel.writeString(titulo);
+        parcel.writeString(categoria);
+        parcel.writeString(descripcion);
+        parcel.writeInt(statusModel);
+        parcel.writeInt(cantidadPersonas);
+        parcel.writeSerializable(createdAt);
     }
 }
