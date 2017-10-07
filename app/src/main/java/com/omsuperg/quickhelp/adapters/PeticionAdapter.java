@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.omsuperg.quickhelp.MainActivity;
@@ -18,7 +19,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class PeticionAdapter extends RecyclerView.Adapter<PeticionAdapter.ViewHolder> {
+public class PeticionAdapter
+        extends RecyclerView.Adapter<PeticionAdapter.ViewHolder> {
     private Context context;
     private List<PeticionModel> peticionModels;
     private final PeticionListener peticionListener;
@@ -30,6 +32,7 @@ public class PeticionAdapter extends RecyclerView.Adapter<PeticionAdapter.ViewHo
         this.peticionModels = peticionModels;
     }
 
+
     @Override
     public PeticionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
@@ -38,10 +41,11 @@ public class PeticionAdapter extends RecyclerView.Adapter<PeticionAdapter.ViewHo
         return vh;
     }
 
-    public void add(PeticionModel peticionModel){
+    public void add(PeticionModel peticionModel) {
         this.peticionModels.add(0, peticionModel);
         notifyDataSetChanged();
     }
+
 
 
     @Override
@@ -54,6 +58,7 @@ public class PeticionAdapter extends RecyclerView.Adapter<PeticionAdapter.ViewHo
                 .load("https://graph.facebook.com/" + peticionModel.getFacebookProfileId() + "/picture?type=large")
                 .transform(new CircleTransform())
                 .into(holder.imageViewCardProfilePeticion);
+
     }
 
     @Override
@@ -69,6 +74,7 @@ public class PeticionAdapter extends RecyclerView.Adapter<PeticionAdapter.ViewHo
         ImageView imageViewCardProfilePeticion;
         PeticionModel peticionModel;
         PeticionListener peticionListener;
+        RatingBar ratingBar;
 
 
         ViewHolder(View v, PeticionListener peticionListener) {
@@ -84,8 +90,8 @@ public class PeticionAdapter extends RecyclerView.Adapter<PeticionAdapter.ViewHo
             this.textviewTituloPeticion = v.findViewById(R.id.card_titulo_peticion);
             this.textviewCardDescripcion = v.findViewById(R.id.card_descripcion);
             this.imageViewCardProfilePeticion = v.findViewById(R.id.imageViewCardProfilePeticion);
-        }
 
+        }
 
     }
 
