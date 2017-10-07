@@ -44,6 +44,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.omsuperg.quickhelp.MainActivity" />
         </activity>
+        <activity
+            android:name=".CommentsActivity"
+            android:label="@string/title_activity_comments"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.omsuperg.quickhelp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

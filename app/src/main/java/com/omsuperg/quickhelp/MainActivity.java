@@ -146,6 +146,8 @@ public class MainActivity extends AppCompatActivity
             LoginManager.getInstance().logOut();
             startActivity(new Intent(this, LoginActivity.class));
             finish();
+        } else if (id == R.id.menuItemComents) {
+            startActivity(new Intent(this, CommentsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
