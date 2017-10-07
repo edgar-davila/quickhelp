@@ -11,7 +11,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="hint_titulo">Descripción breve de la solicitud</string>
-    <string name="hint_detalle">Detalle de la solicitud</string>
+    <string name="hint_detalle">Detalle de solicitud</string>
+    <string name="hint_category">Categoria de solicitud</string>
     <string name="hint_personas">Numero de personas</string>
     <string name="fecha_tope">Fecha tope para la solicitud</string>
 </resources>

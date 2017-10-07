@@ -12,9 +12,12 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:padding="5dp"
+        card_view:elevation="2dp"
+        card_view:cardUseCompatPadding="true"
         card_view:cardCornerRadius="4dp">
 
         <RelativeLayout
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -31,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/imageViewCardProfilePeticion"
+                android:paddingLeft="5dp"
                 android:orientation="vertical">
 
                 <TextView
