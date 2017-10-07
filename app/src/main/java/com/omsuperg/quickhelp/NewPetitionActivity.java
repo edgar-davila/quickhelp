@@ -2,6 +2,7 @@ package com.omsuperg.quickhelp;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.omsuperg.quickhelp.models.PeticionModel;
+import com.omsuperg.quickhelp.models.StatusModel;
+
 import java.util.Calendar;
+import java.util.Date;
 
 public class NewPetitionActivity extends AppCompatActivity {
 
@@ -32,6 +38,9 @@ public class NewPetitionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Peticion creada", Toast.LENGTH_LONG).show();
+                PeticionModel petition = new PeticionModel(0, "472567553116840", ((TextView) findViewById(R.id.textTitulo)).getText().toString(), "",
+                        ((TextView) findViewById(R.id.textDetalle)).getText().toString(), StatusModel.VISIBLE, Integer.valueOf(((TextView) findViewById(R.id.textPersonas)).getText().toString()), new Date());
+                setResult(RESULT_OK, new Intent().putExtra(Constants.PETITION, petition));
                 finish();
             }
         });
@@ -41,6 +50,9 @@ public class NewPetitionActivity extends AppCompatActivity {
         btnHour = (Button) findViewById(R.id.btnHour);
 
         calendar = Calendar.getInstance();
+
+        btnCalendar.setText(calendar.get(Calendar.DAY_OF_MONTH) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.YEAR));
+        btnHour.setText(calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
 
         btnCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
